@@ -140,7 +140,7 @@ public class HintSpinnerAdapter<T> extends ArrayAdapter<T> {
         if (hint != null && position == 0) {
             textView.setText(hint);
             textView.setTextColor(Color.parseColor("#adadad"));
-            textView.setTypeface(textView.getTypeface(), Typeface.NORMAL);
+            textView.setTypeface(null, Typeface.NORMAL);
         } else {
             textView.setText(getLabelFor(objects.get(position - 1)));
         }
