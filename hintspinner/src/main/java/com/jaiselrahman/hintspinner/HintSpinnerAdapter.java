@@ -112,6 +112,7 @@ public class HintSpinnerAdapter<T> extends ArrayAdapter<T> {
         if (hint != null && position == 0) {
             textView.setText(hint);
             textView.setTextColor(Color.parseColor("#adadad"));
+            textView.setTypeface(null, Typeface.NORMAL);
             textView.setTypeface(textView.getTypeface(), Typeface.NORMAL);
         } else {
             textView.setText(getLabelFor(objects.get(position - 1)));
@@ -141,6 +142,7 @@ public class HintSpinnerAdapter<T> extends ArrayAdapter<T> {
             textView.setText(hint);
             textView.setTextColor(Color.parseColor("#adadad"));
             textView.setTypeface(null, Typeface.NORMAL);
+            textView.setTypeface(textView.getTypeface(), Typeface.NORMAL);
         } else {
             textView.setText(getLabelFor(objects.get(position - 1)));
         }
