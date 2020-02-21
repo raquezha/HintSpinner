@@ -27,6 +27,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import androidx.annotation.CallSuper;
+import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
@@ -62,6 +63,14 @@ public class HintSpinnerAdapter<T> extends ArrayAdapter<T> {
     public HintSpinnerAdapter(Context context, List<T> objects, @StringRes int hint) {
         this(context, objects, context.getResources().getString(hint));
     }
+
+    public HintSpinnerAdapter(Context context, @LayoutRes int resource, List<T> objects, String hint) {
+        super(context, resource, objects);
+        this.context = context;
+        this.objects = objects;
+        this.hint = hint;
+    }
+
 
     public HintSpinnerAdapter(Context context, List<T> objects, String hint) {
         super(context, android.R.layout.simple_list_item_1, objects);
