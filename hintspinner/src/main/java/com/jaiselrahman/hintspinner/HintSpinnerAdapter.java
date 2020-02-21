@@ -113,7 +113,7 @@ public class HintSpinnerAdapter<T> extends ArrayAdapter<T> {
             textView.setText(hint);
             textView.setTextColor(Color.parseColor("#adadad"));
             textView.setTypeface(null, Typeface.NORMAL);
-            textView.setTypeface(textView.getTypeface(), Typeface.NORMAL);
+            textView.setTypeface(Typeface.SANS_SERIF, Typeface.NORMAL);
         } else {
             textView.setText(getLabelFor(objects.get(position - 1)));
             textView.setTextColor(ContextCompat.getColor(context, android.R.color.primary_text_light));
@@ -142,7 +142,7 @@ public class HintSpinnerAdapter<T> extends ArrayAdapter<T> {
             textView.setText(hint);
             textView.setTextColor(Color.parseColor("#adadad"));
             textView.setTypeface(null, Typeface.NORMAL);
-            textView.setTypeface(textView.getTypeface(), Typeface.NORMAL);
+            textView.setTypeface(Typeface.SANS_SERIF, Typeface.NORMAL);
         } else {
             textView.setText(getLabelFor(objects.get(position - 1)));
         }
