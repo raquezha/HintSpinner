@@ -17,6 +17,8 @@
 package com.jaiselrahman.hintspinner;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,7 +35,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.core.content.ContextCompat;
 
-@SuppressWarnings({"unused", "WeakerAccess"})
+@SuppressWarnings("ALL")
 public class HintSpinnerAdapter<T> extends ArrayAdapter<T> {
     private static final String TAG = HintSpinnerAdapter.class.getSimpleName();
     private List<T> objects;
@@ -97,11 +99,13 @@ public class HintSpinnerAdapter<T> extends ArrayAdapter<T> {
                 convertView = LayoutInflater.from(context)
                         .inflate(res, parent, false);
         }
+
         textView = (TextView) convertView;
 
         if (hint != null && position == 0) {
             textView.setText(hint);
-            textView.setTextColor(ContextCompat.getColor(context, android.R.color.tertiary_text_light));
+            textView.setTextColor(Color.parseColor("#adadad"));
+            textView.setTypeface(textView.getTypeface(), Typeface.NORMAL);
         } else {
             textView.setText(getLabelFor(objects.get(position - 1)));
             textView.setTextColor(ContextCompat.getColor(context, android.R.color.primary_text_light));
@@ -114,18 +118,22 @@ public class HintSpinnerAdapter<T> extends ArrayAdapter<T> {
     @CallSuper
     public View getView(int position, View convertView, @NonNull ViewGroup parent) {
         TextView textView;
+
         if (convertView == null) {
-            convertView = LayoutInflater.from(context)
-                    .inflate(android.R.layout.simple_list_item_1, parent, false);
-            textView = (TextView) convertView;
-            textView.setCompoundDrawables(null, null,
-                    ContextCompat.getDrawable(context, android.R.drawable.spinner_background), null);
-        } else {
-            textView = (TextView) convertView;
+            if(res == null)
+                convertView = LayoutInflater.from(context)
+                        .inflate(android.R.layout.simple_list_item_1, parent, false);
+            else
+                convertView = LayoutInflater.from(context)
+                        .inflate(res, parent, false);
         }
+
+        textView = (TextView) convertView;
 
         if (hint != null && position == 0) {
             textView.setText(hint);
+            textView.setTextColor(Color.parseColor("#adadad"));
+            textView.setTypeface(textView.getTypeface(), Typeface.NORMAL);
         } else {
             textView.setText(getLabelFor(objects.get(position - 1)));
         }
