@@ -39,6 +39,7 @@ public class HintSpinnerAdapter<T> extends ArrayAdapter<T> {
     private List<T> objects;
     private String hint;
     private Context context;
+    private @LayoutRes Integer res;
 
     private HintSpinnerAdapter() {
         super(null, 0);
@@ -69,14 +70,15 @@ public class HintSpinnerAdapter<T> extends ArrayAdapter<T> {
         this.context = context;
         this.objects = objects;
         this.hint = hint;
+        this.res = resource;
     }
-
 
     public HintSpinnerAdapter(Context context, List<T> objects, String hint) {
         super(context, android.R.layout.simple_list_item_1, objects);
         this.context = context;
         this.objects = objects;
         this.hint = hint;
+        this.res = android.R.layout.simple_list_item_1;
     }
 
     public boolean hasHint() {
@@ -88,8 +90,12 @@ public class HintSpinnerAdapter<T> extends ArrayAdapter<T> {
     public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         TextView textView;
         if (convertView == null) {
-            convertView = LayoutInflater.from(context)
+            if(res == null)
+                convertView = LayoutInflater.from(context)
                     .inflate(android.R.layout.simple_list_item_1, parent, false);
+            else
+                convertView = LayoutInflater.from(context)
+                        .inflate(res, parent, false);
         }
         textView = (TextView) convertView;
 
